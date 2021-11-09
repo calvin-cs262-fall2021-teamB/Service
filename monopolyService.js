@@ -38,7 +38,7 @@ const router = express.Router();
 router.use(express.json());
 
 router.get("/", readHelloMessage);
-// router.get("/playersNathan", readPlayers);
+router.get("/users", readUsers);
 // router.get("/players/:id", readPlayer);
 // router.put("/players/:id", updatePlayer);
 // router.post('/players', createPlayer);
@@ -70,15 +70,15 @@ function readHelloMessage(req, res) {
     res.send('Hello, this is the KnightDash data service!');
 }
 
-// function readPlayers(req, res, next) {
-//     db.many("SELECT * FROM Player")
-//         .then(data => {
-//             res.send(data);
-//         })
-//         .catch(err => {
-//             next(err);
-//         })
-// }
+function readUsers(req, res, next) {
+    db.many("SELECT * FROM KUser")
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            next(err);
+        })
+}
 
 // function readPlayer(req, res, next) {
 //     db.oneOrNone('SELECT * FROM Player WHERE id=${id}', req.params)
