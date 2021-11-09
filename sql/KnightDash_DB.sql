@@ -49,8 +49,8 @@ GRANT SELECT ON FoodItem TO PUBLIC;
 
 
 INSERT INTO DiningHall VALUES (1, 'Johnnys', '7:00:00', '17:00:00', '6165143256');
-INSERT INTO KUSER VALUES (1, 'Nathan', 'Minderhoud', 'offcampus');
-INSERT INTO KUSER VALUES (2, 'Jacob', 'Williams', 'offcampus');
+INSERT INTO KUser VALUES (1, 'Nathan', 'Minderhoud', 'offcampus');
+INSERT INTO KUser VALUES (2, 'Jacob', 'Williams', 'offcampus');
 INSERT INTO Korder VALUES (1, 1, 1, 'active');
 INSERT INTO Korder VALUES (2, 1, 1, 'complete');
 INSERT INTO Korder VALUES (3, 2, 1, 'active');
