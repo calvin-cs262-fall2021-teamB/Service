@@ -121,7 +121,7 @@ function deleteUser(req, res, next) {
 }
 
 function readUserOrder(req, res, next) {
-    db.any('SELECT * FROM KUser ku INNER JOIN KOrder ko ON ku.id = ko.id WHERE ku.id=${id}', req.params)
+    db.any('SELECT * FROM KUser ku INNER JOIN KOrder ko ON ku.id = ko.userId WHERE ku.id=${id}', req.params)
         .then(data => {
             returnDataOr404(res, data);
         })
