@@ -38,12 +38,12 @@ const router = express.Router();
 router.use(express.json());
 
 router.get("/", readHelloMessage);
-router.get("/playersNathan", readPlayers);
-router.get("/players/:id", readPlayer);
-router.put("/players/:id", updatePlayer);
-router.post('/players', createPlayer);
-router.delete('/players/:id', deletePlayer);
-router.get("/playerproperty/:id", readPlayerProperty);
+// router.get("/playersNathan", readPlayers);
+// router.get("/players/:id", readPlayer);
+// router.put("/players/:id", updatePlayer);
+// router.post('/players', createPlayer);
+// router.delete('/players/:id', deletePlayer);
+// router.get("/playerproperty/:id", readPlayerProperty);
 
 app.use(router);
 app.use(errorHandler);
@@ -67,65 +67,65 @@ function returnDataOr404(res, data) {
 }
 
 function readHelloMessage(req, res) {
-    res.send('Hello, this is a student CS 262 Monopoly service!');
+    res.send('Hello, this is the KnightDash data service!');
 }
 
-function readPlayers(req, res, next) {
-    db.many("SELECT * FROM Player")
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            next(err);
-        })
-}
+// function readPlayers(req, res, next) {
+//     db.many("SELECT * FROM Player")
+//         .then(data => {
+//             res.send(data);
+//         })
+//         .catch(err => {
+//             next(err);
+//         })
+// }
 
-function readPlayer(req, res, next) {
-    db.oneOrNone('SELECT * FROM Player WHERE id=${id}', req.params)
-        .then(data => {
-            returnDataOr404(res, data);
-        })
-        .catch(err => {
-            next(err);
-        });
-}
+// function readPlayer(req, res, next) {
+//     db.oneOrNone('SELECT * FROM Player WHERE id=${id}', req.params)
+//         .then(data => {
+//             returnDataOr404(res, data);
+//         })
+//         .catch(err => {
+//             next(err);
+//         });
+// }
 
-function updatePlayer(req, res, next) {
-    db.oneOrNone('UPDATE Player SET email=${body.email}, name=${body.name} WHERE id=${params.id} RETURNING id', req)
-        .then(data => {
-            returnDataOr404(res, data);
-        })
-        .catch(err => {
-            next(err);
-        });
-}
+// function updatePlayer(req, res, next) {
+//     db.oneOrNone('UPDATE Player SET email=${body.email}, name=${body.name} WHERE id=${params.id} RETURNING id', req)
+//         .then(data => {
+//             returnDataOr404(res, data);
+//         })
+//         .catch(err => {
+//             next(err);
+//         });
+// }
 
-function createPlayer(req, res, next) {
-    db.one('INSERT INTO Player(email, name) VALUES (${email}, ${name}) RETURNING id', req.body)
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            next(err);
-        });
-}
+// function createPlayer(req, res, next) {
+//     db.one('INSERT INTO Player(email, name) VALUES (${email}, ${name}) RETURNING id', req.body)
+//         .then(data => {
+//             res.send(data);
+//         })
+//         .catch(err => {
+//             next(err);
+//         });
+// }
 
-function deletePlayer(req, res, next) {
-    db.oneOrNone('DELETE FROM Player WHERE id=${id} RETURNING id', req.params)
-        .then(data => {
-            returnDataOr404(res, data);
-        })
-        .catch(err => {
-            next(err);
-        });
-}
+// function deletePlayer(req, res, next) {
+//     db.oneOrNone('DELETE FROM Player WHERE id=${id} RETURNING id', req.params)
+//         .then(data => {
+//             returnDataOr404(res, data);
+//         })
+//         .catch(err => {
+//             next(err);
+//         });
+// }
 
-function readPlayerProperty(req, res, next) {
-    db.any('SELECT * FROM Property pr INNER JOIN PLAYER p ON pr.playerid = p.id WHERE p.id=${id}', req.params)
-        .then(data => {
-            returnDataOr404(res, data);
-        })
-        .catch(err => {
-            next(err);
-        });
-}
+// function readPlayerProperty(req, res, next) {
+//     db.any('SELECT * FROM Property pr INNER JOIN PLAYER p ON pr.playerid = p.id WHERE p.id=${id}', req.params)
+//         .then(data => {
+//             returnDataOr404(res, data);
+//         })
+//         .catch(err => {
+//             next(err);
+//         });
+// }
