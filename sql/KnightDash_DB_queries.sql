@@ -17,14 +17,14 @@ SELECT *
   
 -- Get all the users' orders
 SELECT *
-  FROM KUSER ku
+  FROM KUser ku
   INNER JOIN Korder ko
   ON ku.ID = ko.ID
  ;
  
 -- Get all the users with active orders
 SELECT *
-  FROM KUSER ku
+  FROM KUser ku
   INNER JOIN Korder ko
   	ON ku.ID = ko.ID
   WHERE ko.status = 'active'
