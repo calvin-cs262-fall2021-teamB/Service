@@ -39,6 +39,7 @@ router.use(express.json());
 
 router.get("/", readHelloMessage);
 router.get("/users", readUsers);
+router.get("/orders", readOrders);
 router.get("/users/:id", readUser);
 router.put("/users/:id", updateUser);
 router.post('/users', createUser);
@@ -72,6 +73,16 @@ function readHelloMessage(req, res) {
 
 function readUsers(req, res, next) {
     db.many("SELECT * FROM KUser")
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            next(err);
+        })
+}
+
+function readOrders(req, res, next) {
+    db.many("SELECT * FROM KOrder")
         .then(data => {
             res.send(data);
         })
