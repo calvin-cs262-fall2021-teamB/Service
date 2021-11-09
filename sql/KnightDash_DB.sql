@@ -22,7 +22,7 @@ CREATE TABLE DiningHall (
 	closeTime time,
 	phoneNumber varchar(11)
 	);
-CREATE TABLE KUSER (
+CREATE TABLE KUser (
 	ID integer PRIMARY KEY,
 	fname varchar(40),
 	lname varchar(40),
