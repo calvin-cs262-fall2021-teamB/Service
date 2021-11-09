@@ -26,7 +26,7 @@ const db = pgp({
 });
 
 // Send the SQL command directly to Postgres.
-db.many("SELECT * FROM Player")
+db.many("SELECT * FROM KUser")
     .then(function (data) {
         console.log(data);
     })
