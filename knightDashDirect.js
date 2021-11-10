@@ -10,7 +10,9 @@
  *      heroku local direct
  *
  * @author: kvlinden
+ * @editor: mindysport
  * @date: Summer, 2020
+ * @update: Fall, 2021
  */
 
 // Set up the database connection.
