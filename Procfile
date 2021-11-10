@@ -1,2 +1,2 @@
-web: node monopolyService.js
-direct: node monopolyDirect.js
+web: node knightDashService.js
+direct: node knightDashDirect.js
