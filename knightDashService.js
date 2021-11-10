@@ -68,7 +68,7 @@ function returnDataOr404(res, data) {
 }
 
 function readHelloMessage(req, res) {
-    res.send('Hello, this is the KnightDash data service!');
+    res.send('Hello, this is the updated KnightDash data service!');
 }
 
 function readUsers(req, res, next) {
