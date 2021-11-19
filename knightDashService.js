@@ -41,6 +41,7 @@ router.get("/", readHelloMessage);
 router.get("/users", readUsers);
 router.get("/orders", readActiveOrders);
 router.get("/drinks", readDrinks);
+router.get("/foods", readFoods);
 router.get("/users/:id", readUser);
 router.put("/users/:id", updateUser);
 router.post('/users', createUser);
@@ -91,8 +92,19 @@ function readActiveOrders(req, res, next) {
             next(err);
         })
 }
+
 function readDrinks(req, res, next) {
     db.many("SELECT * FROM FoodDrinkItem WHERE ItemType = 'drink'")
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            next(err);
+        })
+}
+
+function readFoods(req, res, next) {
+    db.many("SELECT * FROM FoodDrinkItem WHERE ItemType = 'food'")
         .then(data => {
             res.send(data);
         })
