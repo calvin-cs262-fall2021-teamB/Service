@@ -92,7 +92,7 @@ function readActiveOrders(req, res, next) {
         })
 }
 function readDrinks(req, res, next) {
-    db.many("SELECT * FROM FoodItem WHERE ItemType = 'drink'")
+    db.many("SELECT * FROM FoodDrinkItem WHERE ItemType = 'drink'")
         .then(data => {
             res.send(data);
         })
