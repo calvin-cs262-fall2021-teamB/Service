@@ -40,6 +40,7 @@ router.use(express.json());
 router.get("/", readHelloMessage);
 router.get("/users", readUsers);
 router.get("/orders", readActiveOrders);
+router.get("/orders/:id", readOrderDetails);
 router.get("/drinks", readDrinks);
 router.get("/foods", readFoods);
 router.get("/users/:id", readUser);
@@ -115,6 +116,16 @@ function readFoods(req, res, next) {
 
 function readUser(req, res, next) {
     db.oneOrNone('SELECT * FROM KUser WHERE id=${id}', req.params)
+        .then(data => {
+            returnDataOr404(res, data);
+        })
+        .catch(err => {
+            next(err);
+        });
+}
+
+function readOrderDetails(req, res, next) {
+    db.oneOrNone('SELECT * FROM KOrder WHERE id=${id}', req.params)
         .then(data => {
             returnDataOr404(res, data);
         })
