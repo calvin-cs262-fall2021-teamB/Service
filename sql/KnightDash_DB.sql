@@ -9,7 +9,8 @@
 
 -- Drop previous versions of the tables if they they exist, in reverse order of foreign keys.
 
-DROP TABLE IF EXISTS FoodItem;
+DROP TABLE IF EXISTS KOrderItem;
+DROP TABLE IF EXISTS FoodDrinkItem;
 DROP TABLE IF EXISTS KOrder;
 DROP TABLE IF EXISTS KUser;
 DROP TABLE IF EXISTS DiningHall;
@@ -40,7 +41,7 @@ CREATE TABLE FoodDrinkItem (
 	description varchar(50),
 	price money NOT NULL,
 	itemType varchar(20),
-	image varchar (60) 
+	image varchar (200) 
 );
 CREATE TABLE KOrderItem (
 	orderID integer REFERENCES KOrder(ID),
@@ -64,7 +65,10 @@ INSERT INTO FoodDrinkItem VALUES (1, 'burger', null, '5', 'food', null);
 INSERT INTO FoodDrinkItem VALUES (2, 'pizza', null, '10', 'food', null);
 INSERT INTO FoodDrinkItem VALUES (3, 'hotdog', null, '2', 'food', null);
 INSERT INTO FoodDrinkItem VALUES (4, 'Pepsi', 'Wild Cherry', '1.75', 'drink', 'https://m.media-amazon.com/images/I/71pfiM3E5EL.jpg');
-
+INSERT INTO FoodDrinkItem VALUES (5, 'Pepsi', 'Original', '1.75', 'drink', 'https://i5.walmartimages.com/asr/3bcc0155-c9d4-420d-a72d-b51df2f74272.b6728445b72558acb521af846c99591b.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF');
+INSERT INTO FoodDrinkItem VALUES (6, 'Diet Pepsi', 'Wild Cherry', '1.75', 'drink', 'https://s.cornershopapp.com/product-images/3889218.jpg?versionId=dgTSilsJAeIrWU0cqq3Chsjy3LNbHGNe');
+INSERT INTO FoodDrinkItem VALUES (7, 'Diet Pepsi', 'Original', '1.75', 'drink', 'https://static.wixstatic.com/media/afa195_fdcb0bec834f48078a1f229d0963ae41~mv2.jpeg/v1/fill/w_3000,h_3000,al_c,q_85/afa195_fdcb0bec834f48078a1f229d0963ae41~mv2.jpeg');
+INSERT INTO FoodDrinkItem VALUES (8, 'Pepsi', 'Zero Sugar', '1.75', 'drink', 'https://images.freshop.com/00012000018770/b1ba84fb45fdd89a06c268587ba5b326_large.png');
 
 
 
