@@ -39,7 +39,7 @@ router.use(express.json());
 
 router.get("/", readHelloMessage);
 router.get("/users", readUsers);
-router.get("/orders", readOrders);
+router.get("/orders", readActiveOrders);
 router.get("/users/:id", readUser);
 router.put("/users/:id", updateUser);
 router.post('/users', createUser);
@@ -81,8 +81,8 @@ function readUsers(req, res, next) {
         })
 }
 
-function readOrders(req, res, next) {
-    db.many("SELECT * FROM KOrder")
+function readActiveOrders(req, res, next) {
+    db.many("SELECT * FROM KOrder WHERE status = 'active'")
         .then(data => {
             res.send(data);
         })

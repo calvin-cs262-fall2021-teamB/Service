@@ -36,7 +36,7 @@ CREATE TABLE KOrder (
 );
 CREATE TABLE FoodItem (
 	orderID integer REFERENCES KOrder(ID),
-        itemName varchar(20),
+    itemName varchar(20),
 	description varchar(50),
 	price money NOT NULL
 );
