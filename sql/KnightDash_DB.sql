@@ -38,7 +38,9 @@ CREATE TABLE FoodItem (
 	orderID integer REFERENCES KOrder(ID),
     itemName varchar(20),
 	description varchar(50),
-	price money NOT NULL
+	price money NOT NULL,
+	itemType varchar(20),
+	image varchar (60) 
 );
 
 -- Allow users to select data from the tables.
@@ -54,10 +56,11 @@ INSERT INTO KUser VALUES (2, 'Jacob', 'Williams', 'offcampus');
 INSERT INTO Korder VALUES (1, 1, 1, 'active');
 INSERT INTO Korder VALUES (2, 1, 1, 'complete');
 INSERT INTO Korder VALUES (3, 2, 1, 'active');
-INSERT INTO FoodItem VALUES (1, 'burger', null, '5');
-INSERT INTO FoodItem VALUES (1, 'burger', null, '5');
-INSERT INTO FoodItem VALUES (2, 'pizza', null, '10');
-INSERT INTO FoodItem VALUES (3, 'hotdog', null, '2');
+INSERT INTO FoodItem VALUES (1, 'burger', null, '5', 'food', null);
+INSERT INTO FoodItem VALUES (1, 'burger', null, '5', 'food', null);
+INSERT INTO FoodItem VALUES (2, 'pizza', null, '10', 'food', null);
+INSERT INTO FoodItem VALUES (3, 'hotdog', null, '2', 'food', null);
+INSERT INTO FoodItem VALUES (3, 'Pepsi', 'Wild Cherry', '1.75', 'drink', 'https://m.media-amazon.com/images/I/71pfiM3E5EL.jpg');
 
 
 
