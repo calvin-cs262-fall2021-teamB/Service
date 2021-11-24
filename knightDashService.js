@@ -47,6 +47,8 @@ router.get("/foods", readFoods);
 router.get("/users/:id", readUser);
 router.put("/users/:id", updateUser);
 router.post('/users', createUser);
+router.post('/order', createOrder);
+router.post('/orderItem', createOrderItem);
 router.delete('/users/:id', deleteUser);
 router.get("/userOrders/:id", readUserOrder);
 
@@ -164,7 +166,24 @@ function createUser(req, res, next) {
             next(err);
         });
 }
-
+function createOrder(req, res, next) {
+    db.one('INSERT INTO KOrder(ID, userID, diningHallId, status) VALUES (${ID}, ${userID}, ${diningHallId}, ${status}) RETURNING id', req.body)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            next(err);
+        });
+}
+function createOrderItem(req, res, next) {
+    db.one('INSERT INTO KOrderItem(orderID, foodDrinkItemID) VALUES (${orderID}, ${foodDrinkItemID}) RETURNING id', req.body)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            next(err);
+        });
+}
 function deleteUser(req, res, next) {
     db.oneOrNone('DELETE FROM KUser WHERE id=${id} RETURNING id', req.params)
         .then(data => {
