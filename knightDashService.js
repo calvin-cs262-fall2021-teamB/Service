@@ -167,7 +167,7 @@ function createUser(req, res, next) {
         });
 }
 function createOrder(req, res, next) {
-    db.one('INSERT INTO KOrder(ID, userID, diningHallId, status) VALUES (${ID}, ${userID}, ${diningHallId}, ${status}) RETURNING id', req.body)
+    db.one('INSERT INTO KOrder(ID, userID, diningHallId, status) VALUES (${ID}, ${userID}, ${diningHallId}, ${status}) RETURNING ID, userID, diningHallId, status', req.body)
         .then(data => {
             res.send(data);
         })
@@ -176,7 +176,7 @@ function createOrder(req, res, next) {
         });
 }
 function createOrderItem(req, res, next) {
-    db.one('INSERT INTO KOrderItem(orderID, foodDrinkItemID) VALUES (${orderID}, ${foodDrinkItemID}) RETURNING id', req.body)
+    db.one('INSERT INTO KOrderItem(orderID, foodDrinkItemID) VALUES (${orderID}, ${foodDrinkItemID}) RETURNING orderID, foodDrinkItemID', req.body)
         .then(data => {
             res.send(data);
         })
