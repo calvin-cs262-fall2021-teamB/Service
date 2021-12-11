@@ -158,7 +158,7 @@ function updateUser(req, res, next) {
 }
 
 function createUser(req, res, next) {
-    db.one('INSERT INTO KUser(ID, fname, lname, location) VALUES (${ID}, ${fname}, ${lname}, ${location}) RETURNING id', req.body)
+    db.one('INSERT INTO KUser(ID, fname, lname, location) VALUES (${ID}, ${fname}, ${lname}, ${location}) RETURNING ID', req.body)
         .then(data => {
             res.send(data);
         })
