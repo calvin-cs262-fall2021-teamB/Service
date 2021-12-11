@@ -40,7 +40,7 @@ router.use(express.json());
 router.get("/", readHelloMessage);
 router.get("/users", readUsers);
 router.get("/orders", readActiveOrders);
-router.get("/myOrders", readMyOrders);
+router.get("/myOrders/:id", readMyOrders);
 router.get("/orders/:id", readOrderDetails);
 router.get("/drinks", readDrinks);
 router.get("/foods", readFoods);
@@ -98,7 +98,7 @@ function readActiveOrders(req, res, next) {
 }
 
 function readMyOrders(req, res, next) {
-    db.many("SELECT * FROM KUser ku INNER JOIN KOrder ko ON ku.ID = ko.userID WHERE status in ('active', 'in-transit') AND userid = 1234567")
+    db.many("SELECT * FROM KUser ku INNER JOIN KOrder ko ON ku.ID = ko.userID WHERE status in ('active', 'in-transit') AND userid =${id}")
         .then(data => {
             res.send(data);
         })
@@ -158,7 +158,7 @@ function updateUser(req, res, next) {
 }
 
 function createUser(req, res, next) {
-    db.one('INSERT INTO Player(email, name) VALUES (${email}, ${name}) RETURNING id', req.body)
+    db.one('INSERT INTO KUser(ID, fname, lname, location) VALUES (${ID}, ${fname}, ${lname}, ${location}) RETURNING id', req.body)
         .then(data => {
             res.send(data);
         })
