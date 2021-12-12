@@ -149,9 +149,9 @@ function readUser(req, res, next) {
 }
 
 function readOrderDetails(req, res, next) {
-    db.any('SELECT * FROM KOrder ko INNER JOIN KOrderItem koi ON koi.orderID = ko.ID WHERE koi.orderID=${id}', req.params)
-        .then(data => {
-            res.send(data);
+    db.any('SELECT * FROM KOrder WHERE id=${id}', req.params)
+        .oneOrNone(data => {
+            returnDataOr404(res, data);
         })
         .catch(err => {
             next(err);
