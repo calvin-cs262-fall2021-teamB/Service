@@ -98,7 +98,7 @@ function readActiveOrders(req, res, next) {
 }
 
 function readMyOrders(req, res, next) {
-    db.many("SELECT * FROM KUser ku INNER JOIN KOrder ko ON ku.ID = ko.userID WHERE status in ('active', 'in-transit') AND userid=${id}", req.params)
+    db.any("SELECT * FROM KUser ku INNER JOIN KOrder ko ON ku.ID = ko.userID WHERE status in ('active', 'in-transit') AND userid=${id}", req.params)
         .then(data => {
             res.send(data);
         })
