@@ -88,7 +88,7 @@ function readUsers(req, res, next) {
 }
 
 function readActiveOrders(req, res, next) {
-    db.many("SELECT * FROM KUser ku INNER JOIN KOrder ko ON ku.ID = ko.userID WHERE status = 'active'")
+    db.any("SELECT * FROM KUser ku INNER JOIN KOrder ko ON ku.ID = ko.userID WHERE status = 'active'")
         .then(data => {
             res.send(data);
         })
