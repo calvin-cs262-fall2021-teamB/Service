@@ -149,7 +149,7 @@ function readUser(req, res, next) {
 }
 
 function readOrderDetails(req, res, next) {
-    db.oneOrNone('SELECT * FROM KOrder WHERE id=${id}', req.params)
+    db.oneOrNone('SELECT * FROM KOrder ko INNER JOIN KOrderItem koi ON koi.orderID = ko.ID WHERE koi.orderID=${id}', req.params)
         .then(data => {
             returnDataOr404(res, data);
         })

@@ -72,6 +72,16 @@ INSERT INTO FoodDrinkItem(itemName, description, price, itemType, image) VALUES 
 INSERT INTO FoodDrinkItem(itemName, description, price, itemType, image) VALUES ('Pepsi', 'Zero Sugar', '1.75', 'drink', 'https://images.freshop.com/00012000018770/b1ba84fb45fdd89a06c268587ba5b326_large.png');
 INSERT INTO FoodDrinkItem(itemName, description, price, itemType, image) VALUES ('Salad', null, '4.50', 'food', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0JwiZVzO1j8j2K4pKHauapX5ekpPXja_8hA&usqp=CAU');
 INSERT INTO FoodDrinkItem(itemName, description, price, itemType, image) VALUES ('Cookie', null, '0.50', 'food', 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-ms-fields-cookies-024-1544735513.jpg');
-
-
+INSERT INTO KOrderItem(orderID, foodDrinkItemID) VALUES (1, 1);
+INSERT INTO KOrderItem(orderID, foodDrinkItemID) VALUES (1, 2);
+INSERT INTO KOrderItem(orderID, foodDrinkItemID) VALUES (1, 4);
+INSERT INTO KOrderItem(orderID, foodDrinkItemID) VALUES (2, 1);
+INSERT INTO KOrderItem(orderID, foodDrinkItemID) VALUES (2, 3);
+INSERT INTO KOrderItem(orderID, foodDrinkItemID) VALUES (2, 5);
+INSERT INTO KOrderItem(orderID, foodDrinkItemID) VALUES (3, 1);
+INSERT INTO KOrderItem(orderID, foodDrinkItemID) VALUES (3, 2);
+INSERT INTO KOrderItem(orderID, foodDrinkItemID) VALUES (3, 4);
+INSERT INTO KOrderItem(orderID, foodDrinkItemID) VALUES (3, 1);
+INSERT INTO KOrderItem(orderID, foodDrinkItemID) VALUES (3, 3);
+INSERT INTO KOrderItem(orderID, foodDrinkItemID) VALUES (3, 5);
 
