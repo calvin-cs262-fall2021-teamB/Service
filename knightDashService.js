@@ -48,6 +48,7 @@ router.get("/drinks", readDrinks);
 router.get("/foods", readFoods);
 router.get("/users/:id", readUser);
 router.put("/users/:id", updateUser);
+router.put("/order/:id", updateOrder);
 router.post('/users', createUser);
 router.post('/order', createOrder);
 router.post('/orderItem', createOrderItem);
@@ -178,7 +179,15 @@ function updateUser(req, res, next) {
             next(err);
         });
 }
-
+function updateOrder(req, res, next) {
+    db.oneOrNone('UPDATE KOrder SET status=${body.status} WHERE id=${params.id} RETURNING id', req)
+        .then(data => {
+            returnDataOr404(res, data);
+        })
+        .catch(err => {
+            next(err);
+        });
+}
 function createUser(req, res, next) {
     db.one('INSERT INTO KUser(ID, fname, lname, location) VALUES (${ID}, ${fname}, ${lname}, ${location}) RETURNING ID', req.body)
         .then(data => {
