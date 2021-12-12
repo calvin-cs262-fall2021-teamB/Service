@@ -167,7 +167,7 @@ function createUser(req, res, next) {
         });
 }
 function createOrder(req, res, next) {
-    db.one('INSERT INTO KOrder(ID, userID, diningHallId, status) VALUES (${ID}, ${userID}, ${diningHallId}, ${status}) RETURNING ID, userID, diningHallId, status', req.body)
+    db.one('INSERT INTO KOrder(userID, diningHallId, status) VALUES (${userID}, ${diningHallId}, ${status}) RETURNING userID, diningHallId, status', req.body)
         .then(data => {
             res.send(data);
         })
