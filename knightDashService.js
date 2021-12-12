@@ -40,6 +40,7 @@ router.use(express.json());
 router.get("/", readHelloMessage);
 router.get("/users", readUsers);
 router.get("/orders", readActiveOrders);
+router.get("/myActiveOrders/:id", readMyActiveOrders);
 router.get("/myOrders/:id", readMyOrders);
 router.get("/orders/:id", readOrderDetails);
 router.get("/drinks", readDrinks);
@@ -89,6 +90,16 @@ function readUsers(req, res, next) {
 
 function readActiveOrders(req, res, next) {
     db.any("SELECT * FROM KUser ku INNER JOIN KOrder ko ON ku.ID = ko.userID WHERE status = 'active'")
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            next(err);
+        })
+}
+
+function readMyActiveOrders(req, res, next) {
+    db.any("SELECT * FROM KUser ku INNER JOIN KOrder ko ON ku.ID = ko.userID WHERE status in ('active') AND userid=${id}", req.params)
         .then(data => {
             res.send(data);
         })
