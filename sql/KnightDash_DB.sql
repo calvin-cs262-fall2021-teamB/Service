@@ -44,6 +44,7 @@ CREATE TABLE FoodDrinkItem (
 	image varchar (300) 
 );
 CREATE TABLE KOrderItem (
+	ID integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	orderID integer REFERENCES KOrder(ID),
 	foodDrinkItemID integer REFERENCES FoodDrinkItem(ID)
 );

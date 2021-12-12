@@ -160,7 +160,7 @@ function readOrderDetails(req, res, next) {
 }
 
 function readOrderItems(req, res, next) {
-    db.any('SELECT * FROM KOrderItem WHERE orderID=${id}', req.params)
+    db.any('select * from KOrderItem koi INNER JOIN FoodDrinkItem fdi ON koi.foodDrinkItemID = fdi.ID WHERE orderID=${id}', req.params)
         .then(data => {
             res.send(data);
         })
