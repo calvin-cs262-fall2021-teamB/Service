@@ -43,6 +43,7 @@ router.get("/orders", readActiveOrders);
 router.get("/myActiveOrders/:id", readMyActiveOrders);
 router.get("/myOrders/:id", readMyOrders);
 router.get("/orders/:id", readOrderDetails);
+router.get("/items/:id", readOrderItems);
 router.get("/drinks", readDrinks);
 router.get("/foods", readFoods);
 router.get("/users/:id", readUser);
@@ -152,6 +153,16 @@ function readOrderDetails(req, res, next) {
     db.oneOrNone('SELECT * FROM KOrder WHERE id=${id}', req.params)
         .then(data => {
             returnDataOr404(res, data);
+        })
+        .catch(err => {
+            next(err);
+        });
+}
+
+function readOrderItems(req, res, next) {
+    db.any('SELECT * FROM KOrderItem WHERE orderID=${id}', req.params)
+        .then(data => {
+            res.send(data);
         })
         .catch(err => {
             next(err);
