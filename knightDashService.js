@@ -149,8 +149,8 @@ function readUser(req, res, next) {
 }
 
 function readOrderDetails(req, res, next) {
-    db.any('SELECT * FROM KOrder WHERE id=${id}', req.params)
-        .oneOrNone(data => {
+    db.oneOrNone('SELECT * FROM KOrder WHERE id=${id}', req.params)
+        .then(data => {
             returnDataOr404(res, data);
         })
         .catch(err => {
