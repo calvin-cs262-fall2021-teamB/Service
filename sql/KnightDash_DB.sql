@@ -82,7 +82,11 @@ INSERT INTO KOrderItem(orderID, foodDrinkItemID) VALUES (2, 5);
 INSERT INTO KOrderItem(orderID, foodDrinkItemID) VALUES (3, 1);
 INSERT INTO KOrderItem(orderID, foodDrinkItemID) VALUES (3, 2);
 INSERT INTO KOrderItem(orderID, foodDrinkItemID) VALUES (3, 4);
-INSERT INTO KOrderItem(orderID, foodDrinkItemID) VALUES (3, 1);
 INSERT INTO KOrderItem(orderID, foodDrinkItemID) VALUES (3, 3);
 INSERT INTO KOrderItem(orderID, foodDrinkItemID) VALUES (3, 5);
+INSERT INTO KOrderItem(orderID, foodDrinkItemID) VALUES (4, 1);
+INSERT INTO KOrderItem(orderID, foodDrinkItemID) VALUES (4, 2);
+INSERT INTO KOrderItem(orderID, foodDrinkItemID) VALUES (4, 4);
+INSERT INTO KOrderItem(orderID, foodDrinkItemID) VALUES (4, 3);
+INSERT INTO KOrderItem(orderID, foodDrinkItemID) VALUES (4, 5);
 
