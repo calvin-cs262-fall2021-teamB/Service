@@ -2,11 +2,15 @@
 
 This is the data service application for the 
 [CS 262 KnightDash project](https://github.com/calvin-cs262-fall2021-teamB/Project),
- which is deployed here:
+ which was originally deployed here:
           
 - <https://still-crag-08186.herokuapp.com/>
 
-It is based on the standard Heroku with Node.js tutorial.
+It has now been migrated to run in the following location due to Heroku eliminating its free tier of services, including the free dynos used in building / deploying the service.
+
+- https://knightdash-webservice.onrender.com
+
+It was based on the standard Heroku with Node.js tutorial.
 
 - <https://devcenter.heroku.com/articles/getting-started-with-nodejs>  
 
